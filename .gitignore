@@ -1,0 +1,9 @@
+node_modules/
+data/*.db
+.env
+.DS_Store
+npm-debug.log
+coverage/
+.vscode/
+*.log
+/public/*.map

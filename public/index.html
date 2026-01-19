@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Hair Salon Booking</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="top">
+        <button id="navToggle" class="nav-toggle" aria-label="Toggle menu">☰</button>
+        <h1>Hair Salon Booking</h1>
+        <nav>
+          <a href="#" data-view="home" class="nav-link">Home</a>
+          <a href="#" data-view="about" class="nav-link">About</a>
+          <a href="#" data-view="calendar" class="nav-link">Calendar</a>
+          <a href="#" data-view="login" class="nav-link">Login</a>
+          <a href="#" data-view="register" class="nav-link">Register</a>
+          <span id="user-area" style="display:inline-block;margin-left:12px"></span>
+        </nav>
+      </header>
+
+      <main>
+        <section data-view="home" class="view">
+          <div id="verifyBanner" class="verify-banner" style="display:none">
+            <span id="verifyText">Please verify your email to enable bookings.</span>
+            <button id="resendBannerBtn" class="btn secondary small">Resend</button>
+          </div>
+          <section id="services">
+            <h2>Services</h2>
+            <ul id="services-list"></ul>
+          </section>
+
+          <section id="book-form">
+            <h2>Make a Booking</h2>
+            <form id="bookingForm">
+              <label>Name: <input name="name" required /></label>
+              <label>Phone: <input name="phone" /></label>
+              <label>Service:
+                <select name="service_id" required></select>
+              </label>
+              <label>Date: <input name="date" type="date" required /></label>
+              <label>Time: <input name="time" type="time" required /></label>
+              <button type="submit" class="btn">Book</button>
+            </form>
+            <div id="form-msg" class="muted"></div>
+          </section>
+
+          <section id="bookings">
+            <h2>Your Bookings</h2>
+            <ul id="bookings-list"></ul>
+          </section>
+        </section>
+
+        <section data-view="about" class="view" style="display:none">
+          <h2>About</h2>
+          <p>Welcome to our hair salon. Book online easily.</p>
+        </section>
+
+        <section data-view="calendar" class="view" style="display:none">
+          <h2>Calendar</h2>
+          <div id="calendar-controls">
+            <button id="prevMonth" class="btn small secondary">‹</button>
+            <strong id="monthLabel"></strong>
+            <button id="nextMonth" class="btn small secondary">›</button>
+          </div>
+          <div id="calendar"></div>
+          <div id="dayDetails"></div>
+        </section>
+
+        <section data-view="login" class="view" style="display:none">
+          <h2>Login</h2>
+          <form id="loginForm">
+            <label>Email: <input name="email" type="email" required /></label>
+            <label>Password: <input name="password" type="password" required /></label>
+            <button type="submit" class="btn">Login</button>
+            <p><a href="#" data-view="forgot" class="nav-link">Forgot password?</a></p>
+          </form>
+          <div id="login-msg" class="muted"></div>
+        </section>
+
+        <section data-view="forgot" class="view" style="display:none">
+          <h2>Request Password Reset</h2>
+          <form id="forgotForm">
+            <label>Email: <input name="email" type="email" required /></label>
+            <button type="submit" class="btn">Send reset email</button>
+          </form>
+          <div id="forgot-msg" class="muted"></div>
+        </section>
+
+        <section data-view="reset" class="view" style="display:none">
+          <h2>Reset Password</h2>
+          <form id="resetForm">
+            <input type="hidden" name="token" />
+            <label>New password: <input name="password" type="password" required /></label>
+            <button type="submit" class="btn">Reset password</button>
+          </form>
+          <div id="reset-msg" class="muted"></div>
+        </section>
+
+        <section data-view="register" class="view" style="display:none">
+          <h2>Register</h2>
+          <form id="registerForm">
+            <label>Name: <input name="name" required /></label>
+            <label>Email: <input name="email" type="email" required /></label>
+            <label>Password: <input name="password" type="password" required /></label>
+            <button type="submit" class="btn">Register</button>
+          </form>
+          <div id="register-msg" class="muted"></div>
+        </section>
+      </main>
+    </div>
+    <script src="/app.js"></script>
+  </body>
+</html>
