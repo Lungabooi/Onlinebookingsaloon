@@ -61,6 +61,7 @@ function showView(name) {
   // Update verification banner when switching to home
   try { updateVerifyBanner(); } catch (e) {}
   try { updateHomeAuthVisibility(); } catch (e) {}
+
 }
 
 function updateUserArea() {
@@ -161,6 +162,22 @@ document.addEventListener('DOMContentLoaded', () => {
   showView('home');
   loadServices();
   loadBookings(); // This line remains unchanged
+  // Handle deep-links like /#reset?token=... (redirect target from reset email)
+  try {
+    const hash = location.hash || '';
+    const m = hash.match(/^#([^?]+)(?:\?(.*))?$/);
+    if (m) {
+      const path = m[1];
+      const params = m[2] ? Object.fromEntries(new URLSearchParams(m[2])) : {};
+      if (path === 'reset' && params.token) {
+        const resetInput = document.querySelector('input[name=token]');
+        if (resetInput) resetInput.value = params.token;
+        showView('reset');
+      }
+    }
+  } catch (e) { /* ignore */ }
+  // ensure calendar renders immediately (even if bookings fetch fails or is empty)
+  try { renderCalendar(bookingsCache); } catch (e) { console.warn('Calendar initial render failed', e); }
 
   const regForm = document.getElementById('registerForm');
   const regMsg = document.getElementById('register-msg');

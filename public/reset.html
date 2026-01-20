@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Reset Password</title>
+  </head>
+  <body>
+    <script>
+      (function(){
+        try {
+          const qs = new URLSearchParams(location.search);
+          const token = qs.get('token');
+          const target = token ? '/#reset?token=' + encodeURIComponent(token) : '/';
+          location.replace(target);
+        } catch (e) {
+          location.replace('/');
+        }
+      })();
+    </script>
+  </body>
+</html>
