@@ -14,9 +14,9 @@
     "jsonwebtoken": "^9.0.0",
     "nodemailer": "^7.0.12",
     "sqlite3": "^5.0.2",
-    "pg": "^8.10.0"
-    ,
-    "firebase": "^9.22.1"
+    "pg": "^8.10.0",
+    "firebase": "^9.22.1",
+    "firebase-admin": "^11.11.0"
   },
   "devDependencies": {
     "nodemon": "^3.1.11"
