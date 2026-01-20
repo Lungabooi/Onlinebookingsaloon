@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="280" viewBox="0 0 400 280">
+  <rect width="100%" height="100%" fill="#f7efe2"/>
+  <g fill="#4a3426">
+    <rect x="40" y="40" width="320" height="200" rx="12" fill="#ffffff" />
+    <circle cx="120" cy="120" r="36" fill="#f2d8b0" />
+    <rect x="180" y="80" width="140" height="20" rx="6" fill="#f2d8b0" />
+    <rect x="180" y="110" width="140" height="18" rx="6" fill="#d9b789" />
+  </g>
+  <text x="20" y="260" font-family="Montserrat, sans-serif" font-size="14" fill="#6b4a33">Haircut & Styling</text>
+</svg>

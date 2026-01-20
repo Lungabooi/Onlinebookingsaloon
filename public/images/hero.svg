@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="400" viewBox="0 0 1200 400">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1">
+      <stop offset="0" stop-color="#f6e8c3"/>
+      <stop offset="1" stop-color="#b88746"/>
+    </linearGradient>
+  </defs>
+  <rect width="100%" height="100%" fill="url(#g)" />
+  <g fill="#3b2b2b" font-family="Playfair Display, serif">
+    <text x="60" y="140" font-size="48">Classic Salon</text>
+    <text x="60" y="200" font-size="24">Timeless cuts · Expert color · Modern styling</text>
+  </g>
+  <g transform="translate(820,60)" fill="#fff">
+    <rect x="0" y="0" width="320" height="240" rx="10" fill-opacity="0.08" />
+    <text x="20" y="30" font-family="Montserrat, sans-serif" font-size="18">Now booking</text>
+    <text x="20" y="60" font-family="Montserrat, sans-serif" font-size="14">Schedule your appointment online</text>
+  </g>
+</svg>

@@ -281,16 +281,10 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // SSE for real-time updates
+  // Poll bookings regularly (serverless platforms don't support long-lived SSE)
   try {
-    const es = new EventSource('/events');
-    es.addEventListener('bookings', (e) => {
-      bookingsCache = JSON.parse(e.data || '[]');
-      renderCalendar(bookingsCache);
-      loadBookings();
-    });
-  } catch (err) {
-    console.warn('SSE not available', err);
-  }
+    setInterval(() => { loadBookings(); }, 8000);
+  } catch (err) { console.warn('Polling init failed', err); }
 
   // Mobile nav toggle
   const navToggle = document.getElementById('navToggle');
