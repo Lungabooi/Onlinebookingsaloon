@@ -12,15 +12,14 @@ exports.handler = async function(event) {
     await init();
     const pool = getPool();
     const hash = await bcrypt.hash(password, 10);
-    const token = crypto.randomBytes(24).toString('hex');
     try {
-      await pool.query('INSERT INTO users (name,email,password,verify_token,verified,role,created_at) VALUES ($1,$2,$3,$4,false,$5,now())', [name, email, hash, token, 'customer']);
+      // create user as verified immediately (no email verification required)
+      await pool.query('INSERT INTO users (name,email,password,verified,role,created_at) VALUES ($1,$2,$3,true,$4,now())', [name, email, hash, 'customer']);
     } catch (e) {
       if (e.code === '23505') return { statusCode: 409, body: JSON.stringify({ error: 'Email already registered' }) };
       throw e;
     }
-    // send verification async
-    sendVerification(email, token).catch(err => console.error('email send error', err));
+    // no email verification step required
     return { statusCode: 200, headers: { 'Access-Control-Allow-Origin': '*' }, body: JSON.stringify({ success: true }) };
   } catch (err) {
     console.error(err);

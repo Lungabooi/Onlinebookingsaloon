@@ -34,9 +34,7 @@ exports.handler = async function(event) {
       const body = JSON.parse(event.body || '{}');
       const { name, phone, service_id, date, time } = body;
       if (!name || !service_id || !date || !time) return { statusCode: 400, body: JSON.stringify({ error: 'Missing fields' }) };
-      // ensure verified
-      const ures = await pool.query('SELECT verified FROM users WHERE id=$1', [user.id]);
-      if (!ures.rows[0] || !ures.rows[0].verified) return { statusCode: 403, body: JSON.stringify({ error: 'Email not verified' }) };
+      // no email verification required; users can create bookings immediately
       const existing = await pool.query('SELECT * FROM bookings WHERE date=$1 AND time=$2 AND service_id=$3', [date, time, service_id]);
       if (existing.rows[0]) return { statusCode: 409, body: JSON.stringify({ error: 'Time slot already booked' }) };
       const r = await pool.query('INSERT INTO bookings (name,phone,service_id,date,time,created_at,user_id) VALUES ($1,$2,$3,$4,$5,now(),$6) RETURNING id', [name, phone||'', service_id, date, time, user.id]);
